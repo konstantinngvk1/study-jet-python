@@ -7,23 +7,24 @@ ip = '10.31.70.107'
 port = '161'
 
 result1 = getCmd(SnmpEngine(),
-  CommunityData('public', mpModel=0),
-  UdpTransportTarget((ip, port)),
-  ContextData(),
-  ObjectType(snmp_object_1))
+                 CommunityData('public', mpModel=0),
+                 UdpTransportTarget((ip, port)),
+                 ContextData(),
+                 ObjectType(snmp_object_1))
 
 result2 = nextCmd(SnmpEngine(),
-    CommunityData('public', mpModel=0),
-    UdpTransportTarget((ip, port)),
-    ContextData(),
-    ObjectType(snmp_object_2),
-    lexicographicMode=False)
-
+                  CommunityData('public', mpModel=0),
+                  UdpTransportTarget((ip, port)),
+                  ContextData(),
+                  ObjectType(snmp_object_2),
+                  lexicographicMode=False)
 
 print("\nЗапрос данных с '%s'..." % ip)
 for y in result1:
-    for str in list(y)[3]: print(str)
+    for str in list(y)[3]:
+        print(str)
 
 print("\n\nЗапрос MIB")
 for y in result2:
-    for str in list(y)[3]: print(str)
+    for str in list(y)[3]:
+        print(str)
