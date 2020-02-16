@@ -4,7 +4,7 @@ from glob import glob as glob
 
 def Classifier(configs):
     ips = []
-    ifaces = []
+    interfaces = []
     hosts = []
     for f in configs:
         with open(f) as file:
@@ -19,13 +19,13 @@ def Classifier(configs):
                     s = s.replace("interface ", "")
                     s = s.rstrip()
                     iface = {"int": s}
-                    ifaces.append(iface)
+                    interfaces.append(iface)
                 elif re.match("^(hostname)", s):
                     s = s.replace("hostname ", "")
                     s = s.rstrip()
                     host = {"host": s}
                     hosts.append(host)
-    return ips, ifaces, hosts
+    return ips, interfaces, hosts
 
 
 i, inter, h = Classifier(glob(".//config_files//*.txt"))
