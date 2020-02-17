@@ -3,16 +3,28 @@ from glob import glob as glob
 
 
 def Classifier(configs):
-    ips = []
-    interfaces = []
-    hosts = []
+    ips_list = []
+
     for f in configs:
         with open(f) as file:
             for s in file:
-                if re.match("^( ip address) ([0-9]{1,3}\.?){4} ([0-9]{1,3}\.?){4}$", s):
-                    s = s.replace("ip address ", "")
-                    t = re.split(" ", s)
-                    net = ipaddress.IPv4Network((t[1], t[2].rstrip()), 0)
-                    ip = {"ip": net}
+                m = re.match("^ ip address ((?:[0-9]{1,3}\.?){4}) ((?:[0-9]{1,3}\.?){4})", s)
+                i = re.match("^(interface)", s)
+                h = re.match("^(hostname)", s)
+                if m:
+                    print("IP: ", m.group(1))
+                    print('MASK: ', m.group(2))
+                elif i:
+                    print("INTERFACE: ", s)
+                elif h:
+                    print("HOSTNAME: ", s)
+
+
+
+    return ips_list
+
+h = Classifier(glob(".//config_files//*.txt"))
+print(h)
+
 
 
