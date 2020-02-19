@@ -17,7 +17,7 @@ def Classifier(configs):
                 elif i:
                     print("INTERFACE: ", s)
                 elif h:
-                    print("\n\n-------------\n\nHOSTNAME: ", s)
+                    print("\n\n-------------\n\nHOSTNAME: ", s) # Очень сильное колдунство
 
 
 
