@@ -1,8 +1,6 @@
 from flask import Flask, jsonify
-import ipaddress, re
 import re
 import glob
-import pprint
 
 def Classifier(configs):
 
@@ -43,14 +41,6 @@ def index():
     """
     return s
 
-@app.route('/configs')
-def page1():
-    list = h.keys()
-    return str(list)
-
-@app.route('/configs/<hostname>'):
-def hosts_ip(hostname):
-    for h in
 
 
 
